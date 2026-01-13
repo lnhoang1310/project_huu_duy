@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"project_huu_duy\startup_stm32f103xb.o"
+"project_huu_duy\main.o"
+"project_huu_duy\stm32f1xx_it.o"
+"project_huu_duy\stm32f1xx_hal_msp.o"
+"project_huu_duy\stm32f1xx_hal_gpio_ex.o"
+"project_huu_duy\stm32f1xx_hal_i2c.o"
+"project_huu_duy\stm32f1xx_hal.o"
+"project_huu_duy\stm32f1xx_hal_rcc.o"
+"project_huu_duy\stm32f1xx_hal_rcc_ex.o"
+"project_huu_duy\stm32f1xx_hal_gpio.o"
+"project_huu_duy\stm32f1xx_hal_dma.o"
+"project_huu_duy\stm32f1xx_hal_cortex.o"
+"project_huu_duy\stm32f1xx_hal_pwr.o"
+"project_huu_duy\stm32f1xx_hal_flash.o"
+"project_huu_duy\stm32f1xx_hal_flash_ex.o"
+"project_huu_duy\stm32f1xx_hal_exti.o"
+"project_huu_duy\stm32f1xx_hal_tim.o"
+"project_huu_duy\stm32f1xx_hal_tim_ex.o"
+"project_huu_duy\system_stm32f1xx.o"
+"project_huu_duy\button.o"
+"project_huu_duy\lcd.o"
+"project_huu_duy\step_motor.o"
+--strict --scatter "Project_Huu_Duy\Project_Huu_Duy.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Project_Huu_Duy.map" -o Project_Huu_Duy\Project_Huu_Duy.axf
