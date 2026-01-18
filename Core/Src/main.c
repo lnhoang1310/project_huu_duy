@@ -72,6 +72,8 @@ static void MX_TIM2_Init(void);
 typedef enum{
 	CHANGE_DISTANCE,
 	CHANGE_TIME,
+	RUN,
+	STOP,
 	NONE
 }Mode;
 Mode mode = NONE;
@@ -79,8 +81,9 @@ uint32_t last_enc_time = 0;
 uint8_t clk_last_state = 1;
 float distance = 0.0f;
 uint32_t time = 0;
+uint32_t time_display_stop = 0;
 
-void display(void){
+void display_change(void){
 	lcd_gotoxy(&lcd, 0, 0);
 	lcd_send_char(&lcd, (mode == CHANGE_DISTANCE) ? '>' : ' ');
 	lcd_send_string(&lcd, "Step 1: ");
@@ -90,9 +93,39 @@ void display(void){
 	lcd_gotoxy(&lcd, 0, 1);
 	lcd_send_char(&lcd, (mode == CHANGE_TIME) ? '>' : ' ');
 	lcd_send_string(&lcd, "Step 2: ");
+	time = motor2.time_run;
+	lcd_send_int(&lcd, time);
+	lcd_send_string(&lcd, " s");
+}
+
+void display_run(void){
+	lcd_gotoxy(&lcd, 0, 0);
+	lcd_send_string(&lcd, "      RUN       ");
+	lcd_gotoxy(&lcd, 0, 1);
 	time = motor2.time_run - motor2.time_count / 1000;
 	lcd_send_int(&lcd, time);
 	lcd_send_string(&lcd, " s");
+	if(time == 0) mode = NONE;
+}
+
+void display_stop(void){
+	lcd_gotoxy(&lcd, 0, 0);
+	lcd_send_string(&lcd, "      STOP      ");
+}
+
+void display(void){
+	switch(mode){
+		case CHANGE_DISTANCE: case CHANGE_TIME: case NONE:
+			display_change();
+			break;
+		case RUN:
+			display_run();
+			break;
+		case STOP:
+			display_stop();
+			break;
+		default: break;
+	}
 }
 
 void Encoder_Polling(void)
@@ -124,7 +157,7 @@ void Encoder_Polling(void)
                     motor1.direction = (delta > 0) ? FORWARD : BACKWARD;
                     motor1.target_steps = fabs(delta) * STEP_MODE / DISTANCE_PER_ROUND;
                     distance = new_distance;
-					while(motor1.state == ACTIVE);
+					while(motor1.state == ACTIVE){}
                     Stepper_MoveSteps(&motor1);
                 }
             }
@@ -184,7 +217,7 @@ int main(void)
 	  Button_State button = Button_Pressing();
 	  if(button != BUTTON_NONE){
 		  if(button == BUTTON_START_PRESS){
-			  mode = NONE;
+			  mode = RUN;
 			  if(motor2.time_run > 0){
 				  if(motor2.time_count > 0) {
 					  motor2.start_time = HAL_GetTick() - motor2.time_count;
@@ -193,6 +226,8 @@ int main(void)
 				  else Stepper_Rotate(&motor2);
 			  }
 		  }else if(button == BUTTON_STOP_PRESS){
+			  mode = STOP;
+			  time_display_stop = HAL_GetTick();
 			  Stepper_Disable(&motor2);
 		  }else if(button == BUTTON_ENCODER_PRESS){
 			  switch(mode){
@@ -205,8 +240,13 @@ int main(void)
 				  case CHANGE_TIME:
 					  mode = NONE;
 					  break;
+				  default: break;
 			  }
 		  }
+	  }
+	  
+	  if(mode == STOP && HAL_GetTick() - time_display_stop >= 3000){
+		  mode = NONE;
 	  }
 	  display();
 	  
