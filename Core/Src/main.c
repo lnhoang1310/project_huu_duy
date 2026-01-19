@@ -101,7 +101,7 @@ void display_change(void){
 void display_run(void){
 	lcd_gotoxy(&lcd, 0, 0);
 	lcd_send_string(&lcd, "      RUN       ");
-	lcd_gotoxy(&lcd, 0, 1);
+	lcd_gotoxy(&lcd, 4, 1);
 	time = motor2.time_run - motor2.time_count / 1000;
 	lcd_send_int(&lcd, time);
 	lcd_send_string(&lcd, " s");
@@ -155,10 +155,11 @@ void Encoder_Polling(void)
                 float delta = new_distance - distance;
                 if (fabs(delta) >= 0.01f){
                     motor1.direction = (delta > 0) ? FORWARD : BACKWARD;
-                    motor1.target_steps = fabs(delta) * STEP_MODE / DISTANCE_PER_ROUND;
+                    motor1.target_steps += fabs(delta) * STEP_MODE / DISTANCE_PER_ROUND;
                     distance = new_distance;
-					while(motor1.state == ACTIVE){}
-                    Stepper_MoveSteps(&motor1);
+					if(motor1.state == INACTIVE){
+						Stepper_MoveSteps(&motor1);
+					}
                 }
             }
             last_enc_time = HAL_GetTick();
@@ -205,7 +206,7 @@ int main(void)
 	lcd_init(&lcd, &hi2c1, LCD_ADDRESS);
 	Stepper_Init(&motor1, &htim1, TIM_CHANNEL_1, MOTOR1_DIR_GPIO_Port, MOTOR1_DIR_Pin, MOTOR1_ENA_GPIO_Port, MOTOR1_ENA_Pin);
 	Stepper_Init(&motor2, &htim2, TIM_CHANNEL_1, MOTOR2_DIR_GPIO_Port, MOTOR2_DIR_Pin, MOTOR2_ENA_GPIO_Port, MOTOR2_ENA_Pin);
-	motor1.speed_rpm = MAX_RPM;
+	motor1.speed_rpm = 10;
 	motor2.speed_rpm = 300;
   /* USER CODE END 2 */
 
@@ -216,8 +217,9 @@ int main(void)
 	  Encoder_Polling();
 	  Button_State button = Button_Pressing();
 	  if(button != BUTTON_NONE){
-		  if(button == BUTTON_START_PRESS){
+		  if(button == BUTTON_START_PRESS && mode != RUN){
 			  mode = RUN;
+			  lcd_clear(&lcd);
 			  if(motor2.time_run > 0){
 				  if(motor2.time_count > 0) {
 					  motor2.start_time = HAL_GetTick() - motor2.time_count;
@@ -225,8 +227,9 @@ int main(void)
 				  }
 				  else Stepper_Rotate(&motor2);
 			  }
-		  }else if(button == BUTTON_STOP_PRESS){
+		  }else if(button == BUTTON_STOP_PRESS && mode != STOP){
 			  mode = STOP;
+			  lcd_clear(&lcd);
 			  time_display_stop = HAL_GetTick();
 			  Stepper_Disable(&motor2);
 		  }else if(button == BUTTON_ENCODER_PRESS){

@@ -1,8 +1,8 @@
 Dependencies for Project 'Project_Huu_Duy', Target 'Project_Huu_Duy': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
 F (startup_stm32f103xb.s)(0x696531D7)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\_Project_Huu_Duy-IC:\Users\Dell\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Dell\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 538" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f103xb.lst --xref -o project_huu_duy\startup_stm32f103xb.o --depend project_huu_duy\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x696CE183)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Button -I ../LCD -I ../STEP_MOTOR-I.\RTE\_Project_Huu_Duy-IC:\Users\Dell\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Dell\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o project_huu_duy\main.o --omf_browse project_huu_duy\main.crf --depend project_huu_duy\main.d)
-I (../Core/Inc/main.h)(0x69651E8C)
+F (../Core/Src/main.c)(0x696E724E)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Button -I ../LCD -I ../STEP_MOTOR-I.\RTE\_Project_Huu_Duy-IC:\Users\Dell\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Dell\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o project_huu_duy\main.o --omf_browse project_huu_duy\main.crf --depend project_huu_duy\main.d)
+I (../Core/Inc/main.h)(0x696E6727)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66C8AE0F)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x6964DA60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66C8AE0F)
@@ -35,7 +35,7 @@ I (../STEP_MOTOR/step_motor.h)(0x6964F66D)
 I (../Button/button.h)(0x6964C77D)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5EC78414)
 F (../Core/Src/stm32f1xx_it.c)(0x696531D3)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Button -I ../LCD -I ../STEP_MOTOR-I.\RTE\_Project_Huu_Duy-IC:\Users\Dell\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Dell\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o project_huu_duy\stm32f1xx_it.o --omf_browse project_huu_duy\stm32f1xx_it.crf --depend project_huu_duy\stm32f1xx_it.d)
-I (../Core/Inc/main.h)(0x69651E8C)
+I (../Core/Inc/main.h)(0x696E6727)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66C8AE0F)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x6964DA60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66C8AE0F)
@@ -65,7 +65,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66C8AE0F)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66C8AE0F)
 I (../Core/Inc/stm32f1xx_it.h)(0x696531D4)
 F (../Core/Src/stm32f1xx_hal_msp.c)(0x696531D4)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Button -I ../LCD -I ../STEP_MOTOR-I.\RTE\_Project_Huu_Duy-IC:\Users\Dell\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Dell\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o project_huu_duy\stm32f1xx_hal_msp.o --omf_browse project_huu_duy\stm32f1xx_hal_msp.crf --depend project_huu_duy\stm32f1xx_hal_msp.d)
-I (../Core/Inc/main.h)(0x69651E8C)
+I (../Core/Inc/main.h)(0x696E6727)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66C8AE0F)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x6964DA60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66C8AE0F)
@@ -515,7 +515,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x66C8AE0F)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x66C8AE0F)
 F (..\Button\button.c)(0x69651FC6)(--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Button -I ../LCD -I ../STEP_MOTOR-I.\RTE\_Project_Huu_Duy-IC:\Users\Dell\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Dell\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_MD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xB-o project_huu_duy\button.o --omf_browse project_huu_duy\button.crf --depend project_huu_duy\button.d)
 I (..\Button\button.h)(0x6964C77D)
-I (../Core/Inc/main.h)(0x69651E8C)
+I (../Core/Inc/main.h)(0x696E6727)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x66C8AE0F)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x6964DA60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x66C8AE0F)
